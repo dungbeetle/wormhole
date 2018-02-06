@@ -8,7 +8,7 @@ import java.net.URI;
 import java.util.zip.GZIPOutputStream;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.hadoop.io.compress.CompressionOutputStream;
+//import org.apache.hadoop.io.compress.CompressionOutputStream;
 import org.apache.log4j.Logger;
 
 import com.dp.nebula.wormhole.common.AbstractPlugin;
@@ -17,7 +17,7 @@ import com.dp.nebula.wormhole.common.interfaces.ILineReceiver;
 import com.dp.nebula.wormhole.common.interfaces.IWriter;
 import com.dp.nebula.wormhole.plugins.common.PCInfo;
 import com.dp.nebula.wormhole.plugins.common.SFTPUtils;
-import com.hadoop.compression.lzo.LzopCodec;
+//import com.hadoop.compression.lzo.LzopCodec;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -47,7 +47,7 @@ public class SftpWriter extends AbstractPlugin implements IWriter {
 	private ChannelSftp c = null;
 
 	private GZIPOutputStream gout = null;
-	private CompressionOutputStream cout = null;
+//	private CompressionOutputStream cout = null;
 	private OutputStream out = null;
 	private BufferedWriter bw = null;
 
@@ -108,12 +108,12 @@ public class SftpWriter extends AbstractPlugin implements IWriter {
 				bw = new BufferedWriter(new OutputStreamWriter(gout, encoding),
 						bufferSize);
 			} else if (fileType.equalsIgnoreCase("lzo")) {
-				LzopCodec lzopCodec = new LzopCodec();
-				lzopCodec.setConf(SFTPUtils.getConf());
-
-				cout = lzopCodec.createOutputStream(out);
-				bw = new BufferedWriter(new OutputStreamWriter(cout, encoding),
-						bufferSize);
+//				LzopCodec lzopCodec = new LzopCodec();
+//				lzopCodec.setConf(SFTPUtils.getConf());
+//
+//				cout = lzopCodec.createOutputStream(out);
+//				bw = new BufferedWriter(new OutputStreamWriter(cout, encoding),
+//						bufferSize);
 			} else {
 				throw new IllegalArgumentException("illegal argument fileType="
 						+ fileType);
@@ -165,9 +165,9 @@ public class SftpWriter extends AbstractPlugin implements IWriter {
 			if (bw != null) {
 				bw.close();
 			}
-			if (cout != null) {
-				cout.close();
-			}
+//			if (cout != null) {
+//				cout.close();
+//			}
 			if (gout != null) {
 				gout.close();
 			}

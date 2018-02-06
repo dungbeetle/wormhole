@@ -3,11 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<artifactId>nebula-parent</artifactId>
-		<groupId>com.dp.nebula</groupId>
-		<version>1.0.0</version>
-	</parent>
+	<!--<parent>-->
+		<!--<artifactId>nebula-parent</artifactId>-->
+		<!--<groupId>com.dp.nebula</groupId>-->
+		<!--<version>1.0.0</version>-->
+	<!--</parent>-->
+	<groupId>com.fzd.etl</groupId>
 
 	<artifactId>nebula-wormhole</artifactId>
 	<version>0.1.0</version>
@@ -23,6 +24,10 @@
 				<enabled>true</enabled>
 				<updatePolicy>never</updatePolicy>
 			</releases>
+		</repository>
+		<repository>
+			<id>github-dianping-maven-repo</id>
+			<url>https://raw.githubusercontent.com/dianping/maven-repo/master</url>
 		</repository>
 
 		<repository>
@@ -81,11 +86,11 @@
 	</repositories>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.dp.nebula</groupId>
-			<artifactId>nebula-common</artifactId>
-			<version>1.1.2</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.dp.nebula</groupId>-->
+			<!--<artifactId>nebula-common</artifactId>-->
+			<!--<version>1.1.2</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
@@ -107,11 +112,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.13</version>
 		</dependency>
-		<dependency>
-			<groupId>com.microsoft</groupId>
-			<artifactId>sqljdbc</artifactId>
-			<version>4</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.microsoft</groupId>-->
+			<!--<artifactId>sqljdbc</artifactId>-->
+			<!--<version>4</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -177,28 +182,35 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.dp.cosmos</groupId>
-			<artifactId>hadoop-core</artifactId>
-			<version>0.20.203.0</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>hsqldb</artifactId>
-					<groupId>hsqldb</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
 			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-lzo</artifactId>
-			<version>0.4.15</version>
+			<artifactId>hadoop-common</artifactId>
+			<version>2.6.0</version>
+			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>com.dp.cosmos</groupId>
-			<artifactId>hive-jdbc</artifactId>
-			<version>0.8.1</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.dp.cosmos</groupId>-->
+			<!--<artifactId>hadoop-core</artifactId>-->
+			<!--<version>0.20.203.0</version>-->
+			<!--<exclusions>-->
+				<!--<exclusion>-->
+					<!--<artifactId>hsqldb</artifactId>-->
+					<!--<groupId>hsqldb</groupId>-->
+				<!--</exclusion>-->
+			<!--</exclusions>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>org.apache.hadoop</groupId>-->
+			<!--<artifactId>hadoop-lzo</artifactId>-->
+			<!--<version>0.4.15</version>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>com.dp.cosmos</groupId>-->
+			<!--<artifactId>hive-jdbc</artifactId>-->
+			<!--<version>0.8.1</version>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>com.jcraft</groupId>
@@ -238,23 +250,23 @@
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase</artifactId>
-			<version>0.94.8.dp</version>
+			<version>0.94.10</version>
 		</dependency>
 	</dependencies>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.3.3</version>
-				<configuration>
-					<findbugsXmlOutput>true</findbugsXmlOutput>
-					<!-- Optional directory to put findbugs xml report -->
-					<findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
+	<!--<reporting>-->
+		<!--<plugins>-->
+			<!--<plugin>-->
+				<!--<groupId>org.codehaus.mojo</groupId>-->
+				<!--<artifactId>findbugs-maven-plugin</artifactId>-->
+				<!--<version>2.3.3</version>-->
+				<!--<configuration>-->
+					<!--<findbugsXmlOutput>true</findbugsXmlOutput>-->
+					<!--&lt;!&ndash; Optional directory to put findbugs xml report &ndash;&gt;-->
+					<!--<findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
+		<!--</plugins>-->
+	<!--</reporting>-->
 
 	<build>
 		<plugins>

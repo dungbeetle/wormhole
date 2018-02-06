@@ -5,16 +5,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import com.dp.nebula.wormhole.common.utils.DateHelper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.dp.nebula.common.utils.DateHelper;
+
 import com.dp.nebula.wormhole.common.AbstractSplitter;
 import com.dp.nebula.wormhole.common.JobStatus;
 import com.dp.nebula.wormhole.common.WormholeException;
 import com.dp.nebula.wormhole.common.interfaces.IParam;
 
-public class GreenplumReaderSplitter extends AbstractSplitter{	
+/**
+ * @author mock
+ */
+public class GreenplumReaderSplitter extends AbstractSplitter{
 	private int errorCodeAdd;
 	
 	private Log logger = LogFactory.getLog(GreenplumReaderSplitter.class);
@@ -128,13 +132,13 @@ public class GreenplumReaderSplitter extends AbstractSplitter{
 			} else if (items.length == 2) {
 				Date startDate = null, endDate = null;
 				int startInt = 0, endInt = 0;
-				startDate = DateHelper.parse(items[0],DateHelper.DATE_FORMAT_PATTERN_YEAR_MONTH_DAY,null);
-				endDate = DateHelper.parse(items[1],DateHelper.DATE_FORMAT_PATTERN_YEAR_MONTH_DAY,null);
+				startDate = DateHelper.parse(items[0]);
+				endDate = DateHelper.parse(items[1]);
 				if (startDate != null && endDate != null) {
 					Date day = (Date) startDate.clone();
 					while (day.before(endDate) || day.equals(endDate)) {
-						result.add(DateHelper.format(day,DateHelper.DATE_FORMAT_PATTERN_YEAR_MONTH_DAY));
-						day = DateHelper.changeDays(day, 1);
+						result.add(DateHelper.format(day));
+//						day = DateHelper.changeDays(day, 1);
 					}
 					continue;
 				} else if (startDate == null || endDate == null) {

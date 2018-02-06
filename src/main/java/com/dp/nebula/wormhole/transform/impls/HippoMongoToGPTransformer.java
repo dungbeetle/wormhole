@@ -3,7 +3,7 @@ package com.dp.nebula.wormhole.transform.impls;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.dp.nebula.common.utils.TypeConvertionHelper;
+//import com.dp.nebula.common.utils.TypeConvertionHelper;
 import com.dp.nebula.wormhole.common.AbstractTransformer;
 import com.dp.nebula.wormhole.common.DefaultLine;
 import com.dp.nebula.wormhole.common.interfaces.ILine;
@@ -19,7 +19,7 @@ public class HippoMongoToGPTransformer extends AbstractTransformer{
 		String statDate = null;
 		for(int i = 0; i < line.getFieldNum(); i++) {
 			if(i==0 || i==2 || i==4) {
-				long unixTime = TypeConvertionHelper.convertStringToInteger(line.getField(i), 0);
+				long unixTime = Integer.valueOf(line.getField(i));
 				if(unixTime == 0) {
 					s_logger.error("Unix time error for:" + line.getField(i));
 				}

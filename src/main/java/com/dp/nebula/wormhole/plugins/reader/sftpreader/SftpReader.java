@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.hadoop.io.compress.CompressionInputStream;
+//import org.apache.hadoop.io.compress.CompressionInputStream;
 import org.apache.log4j.Logger;
 
 import com.dp.nebula.wormhole.common.AbstractPlugin;
@@ -20,7 +20,7 @@ import com.dp.nebula.wormhole.common.interfaces.IReader;
 import com.dp.nebula.wormhole.plugins.common.PCInfo;
 import com.dp.nebula.wormhole.plugins.common.SFTPUtils;
 import com.dp.nebula.wormhole.plugins.reader.sftpreader.ParamKey;
-import com.hadoop.compression.lzo.LzopCodec;
+//import com.hadoop.compression.lzo.LzopCodec;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -56,7 +56,7 @@ public class SftpReader extends AbstractPlugin implements IReader {
 	private ChannelSftp c = null;
 	
 	private GZIPInputStream gin = null;
-	private CompressionInputStream cin = null;
+//	private CompressionInputStream cin = null;
 	private InputStream in = null;
 	private BufferedReader br = null;
 	
@@ -150,11 +150,11 @@ public class SftpReader extends AbstractPlugin implements IReader {
 	            br = new BufferedReader(
 	                    new InputStreamReader(gin, encoding), bufferSize);
 			}else if (fileType.equalsIgnoreCase("lzo")){
-				LzopCodec lzopCodec = new LzopCodec();
-				lzopCodec.setConf(SFTPUtils.getConf());
-				
-				cin = lzopCodec.createInputStream(in);
-	            br = new BufferedReader(new InputStreamReader(cin, encoding), bufferSize);
+//				LzopCodec lzopCodec = new LzopCodec();
+//				lzopCodec.setConf(SFTPUtils.getConf());
+//
+//				cin = lzopCodec.createInputStream(in);
+//	            br = new BufferedReader(new InputStreamReader(cin, encoding), bufferSize);
 			}else{
 				throw new IllegalArgumentException("illegal argument fileType=" + fileType);
 			}
@@ -240,9 +240,9 @@ public class SftpReader extends AbstractPlugin implements IReader {
 			br.close();
 		}
 		
-		if (cin != null){
-			cin.close();
-		}
+//		if (cin != null){
+//			cin.close();
+//		}
 		
 		if (gin != null){
 			gin.close();

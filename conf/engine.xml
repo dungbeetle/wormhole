@@ -3,7 +3,7 @@
 	<storageClassName>com.dp.nebula.wormhole.engine.storage.RAMStorage</storageClassName>
 	<storageLineLimit>1000</storageLineLimit>
 	<storageByteLimit>1000000</storageByteLimit>
-	<storageDistructLimit>1</storageDistructLimit>
+	<storageDistructLimit>2</storageDistructLimit>
 	<statusCheckInterval>1000</statusCheckInterval>
 	<!-- display monitor info when status check x times -->
 	<monitorInfoDisplayPeriod>10</monitorInfoDisplayPeriod>

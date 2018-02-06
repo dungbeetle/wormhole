@@ -12,8 +12,8 @@
     <preCheck></preCheck>
     <sql>select id,name from sec_user</sql>
     <columns>id,name</columns>
-    <autoIncKey>id</autoIncKey>
-    <concurrency>2</concurrency>
+    <autoIncKey></autoIncKey>
+    <concurrency>5</concurrency>
     <tableName>sec_user</tableName>
     <partitionName></partitionName>
     <partitionValue></partitionValue>
@@ -33,28 +33,29 @@
     <tableName>tar_user</tableName>
     <params></params>
     <preCheck></preCheck>
-    <concurrency>2</concurrency>
+    <concurrency>5</concurrency>
     <sql>select count(*) from tar_user</sql>
     <columns>id,name</columns>
-    <needSplit>true</needSplit>
-  </writer>
-  <!--<writer>-->
-    <!--<plugin>mysqlwriter</plugin>-->
-    <!--<connectProps></connectProps>-->
-    <!--<ip>116.62.216.230</ip>-->
-    <!--<port>3306</port>-->
-    <!--<dbname>byd_o2o</dbname>-->
-    <!--<username>byd_o2o</username>-->
-    <!--<password>byd_o2oP@ssw0rd</password>-->
-    <!--<encoding>UTF-8</encoding>-->
-    <!--<OPERATION>update</OPERATION>-->
-    <!--<tableName>tar_user</tableName>-->
-    <!--<params></params>-->
-    <!--<preCheck></preCheck>-->
-    <!--<sql>select count(*) from tar_user</sql>-->
-    <!--<columns>id,name</columns>-->
     <!--<needSplit>true</needSplit>-->
-  <!--</writer>-->
+  </writer>
+  <writer>
+    <plugin>mysqlwriter</plugin>
+    <connectProps></connectProps>
+    <ip>116.62.216.230</ip>
+    <port>3306</port>
+    <dbname>byd_o2o</dbname>
+    <username>byd_o2o</username>
+    <password>byd_o2oP@ssw0rd</password>
+    <encoding>UTF-8</encoding>
+    <OPERATION>update</OPERATION>
+    <tableName>tar_user</tableName>
+    <params></params>
+    <preCheck></preCheck>
+    <concurrency>5</concurrency>
+    <sql>select count(*) from tar_user</sql>
+    <columns>id,name</columns>
+    <!--<needSplit>true</needSplit>-->
+  </writer>
   <!--<writer>-->
     <!--<plugin>sftpwriter</plugin>-->
     <!--<dir>sftp://root@10.1.77.85:58422/root/wormholeTest/</dir>-->

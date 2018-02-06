@@ -134,7 +134,7 @@ public class MysqlWriter extends AbstractPlugin implements IWriter {
 
 	@Override
 	public void write(ILineReceiver receiver) {
-		logger.info("##writeID[" + writerID + "]");
+
 		if (loadFile) {
 			loader.write(receiver);
 			return;
@@ -173,7 +173,7 @@ public class MysqlWriter extends AbstractPlugin implements IWriter {
 					if ("update".equalsIgnoreCase(operation)) {
 						builder.append(updateOpAppendStr);
 					}
-					logger.info("##writerID[" + writerID + "] update one block sql:" + builder.toString());
+					logger.info("##writerID[" + writerID + "]threadID["+Thread.currentThread().getId()+"] update one block sql:" + builder.toString());
 					updateOneBlock(builder.toString(), count);
 					builder = new StringBuilder(sql);
 					count = 0;

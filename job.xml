@@ -2,32 +2,67 @@
   <reader>
     <plugin>mysqlreader</plugin>
     <connectProps></connectProps>
-    <ip>10.1.77.85</ip>
+    <ip>116.62.216.230</ip>
     <port>3306</port>
-    <dbname>TaurusCopy</dbname>
-    <username>root</username>
-    <password>123456</password>
+    <dbname>byd_o2o</dbname>
+    <username>byd_o2o</username>
+    <password>byd_o2oP@ssw0rd</password>
     <encoding>UTF-8</encoding>
     <params></params>
     <preCheck></preCheck>
-    <sql>select * from TaurusTaskAttempt</sql>
-    <columns></columns>
-    <autoIncKey></autoIncKey>  
-    <concurrency>1</concurrency>
+    <sql>select id,name from sec_user</sql>
+    <columns>id,name</columns>
+    <autoIncKey>id</autoIncKey>
+    <concurrency>2</concurrency>
+    <tableName>sec_user</tableName>
     <partitionName></partitionName>
     <partitionValue></partitionValue>
     <countSql></countSql>
-    <needSplit>false</needSplit>>
+    <needSplit>true</needSplit>
   </reader>
   <writer>
-    <plugin>sftpwriter</plugin>
-    <dir>sftp://root@10.1.77.85:58422/root/wormholeTest/</dir>
-    <password>12qwaszx</password>
-    <field_split>\001</field_split>
-    <line_split>\n</line_split>
+    <plugin>mysqlwriter</plugin>
+    <connectProps></connectProps>
+    <ip>116.62.216.230</ip>
+    <port>3306</port>
+    <dbname>byd_o2o</dbname>
+    <username>byd_o2o</username>
+    <password>byd_o2oP@ssw0rd</password>
     <encoding>UTF-8</encoding>
-    <buffer_size>4096</buffer_size>
-    <nullchar>\N</nullchar>
-    <concurrency>1</concurrency>
+    <OPERATION>update</OPERATION>
+    <tableName>tar_user</tableName>
+    <params></params>
+    <preCheck></preCheck>
+    <sql>select count(*) from tar_user</sql>
+    <columns>id,name</columns>
+    <needSplit>true</needSplit>
   </writer>
+  <writer>
+    <plugin>mysqlwriter</plugin>
+    <connectProps></connectProps>
+    <ip>116.62.216.230</ip>
+    <port>3306</port>
+    <dbname>byd_o2o</dbname>
+    <username>byd_o2o</username>
+    <password>byd_o2oP@ssw0rd</password>
+    <encoding>UTF-8</encoding>
+    <OPERATION>update</OPERATION>
+    <tableName>tar_user</tableName>
+    <params></params>
+    <preCheck></preCheck>
+    <sql>select count(*) from tar_user</sql>
+    <columns>id,name</columns>
+    <needSplit>true</needSplit>
+  </writer>
+  <!--<writer>-->
+    <!--<plugin>sftpwriter</plugin>-->
+    <!--<dir>sftp://root@10.1.77.85:58422/root/wormholeTest/</dir>-->
+    <!--<password>12qwaszx</password>-->
+    <!--<field_split>\001</field_split>-->
+    <!--<line_split>\n</line_split>-->
+    <!--<encoding>UTF-8</encoding>-->
+    <!--<buffer_size>4096</buffer_size>-->
+    <!--<nullchar>\N</nullchar>-->
+    <!--<concurrency>1</concurrency>-->
+  <!--</writer>-->
 </job>

@@ -65,7 +65,7 @@ public class MysqlReader extends AbstractPlugin implements IReader{
 			logger.error("Sql for mysqlReader is empty.");
 			throw new WormholeException("Sql for mysqlReader is empty.",JobStatus.READ_FAILED.getStatus()+ERROR_CODE_ADD);
 		}
-		logger.debug(String.format("MysqlReader start to query %s .", sql));
+		logger.info(String.format("threadId["+Thread.currentThread().getId()+"]MysqlReader start to query %s .", sql));
 		for(String sqlItem:sql.split(";")){
 			sqlItem = sqlItem.trim();
 			if(sqlItem.isEmpty()) {

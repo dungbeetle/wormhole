@@ -110,7 +110,7 @@ public class MysqlReaderKeySplitter extends AbstractSplitter{
 		long min=0,max=0;
 		
 		try {
-			logger.debug("RangeSql: " + rangeSql);
+			logger.info("RangeSql: " + rangeSql);
 			ResultSet rs = DBUtils.query(conn, rangeSql);
 			rs.next();
 			min = rs.getInt(1);

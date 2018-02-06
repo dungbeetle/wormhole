@@ -251,6 +251,8 @@ public class Engine {
 	private int checkStatus(ReaderManager readerManager,
 			WriterManager writerManager, MonitorManager monitorManager,
 			StorageManager storageManager) {
+
+		s_logger.info("##READER_THREAD## " + readerManager.getThreadResultListSize());
 		boolean readerTerminated = readerManager.terminate();
 		if (readerTerminated) {
 			storageManager.closeInput();

@@ -171,4 +171,8 @@ final class ReaderManager extends AbstractPluginManager {
 	public int getStatus() {
 		return getStatus(threadResultList, readerPool);
 	}
+
+	public int getThreadResultListSize() {
+		return threadResultList.size();
+	}
 }
